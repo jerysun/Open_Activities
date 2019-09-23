@@ -11,6 +11,7 @@ OpenActivities aims to make the open activity events more sociable.
 - Add the features such as Paging, Sorting and Filtering
 - Use SignalR to enable real time web communication to a chat feature
 - Entity Framework Core 2.x
+- Use Semantic UI instead of Bootstrap plus Material UI
 
 Have fun,
 
