@@ -28,6 +28,7 @@ namespace OpenAPI
                     // Applies any pending migrations for the context to the database.
                     // Will create the database if it does not already exist.
                     context.Database.Migrate();
+                    Seed.SeedData(context);
                 }
                 catch (Exception ex)
                 {
