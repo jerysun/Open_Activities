@@ -4,6 +4,8 @@ using MediatR;
 using System.Collections.Generic;
 using Domain;
 using OpenApp.Activities;
+using System;
+using System.Threading;
 
 namespace OpenAPI.Controllers
 {
@@ -18,9 +20,15 @@ namespace OpenAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Activity>>> List()
+        public async Task<ActionResult<List<Activity>>> List(/*CancellationToken ct*/)
         {
-            return await _mediator.Send(new List.Query());
+            return await _mediator.Send(new List.Query()/*, ct*/);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Activity>> Details(Guid id)
+        {
+            return await _mediator.Send(new Details.Query{Id = id});
         }
     }
 }
