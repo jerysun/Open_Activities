@@ -28,7 +28,15 @@ namespace OpenAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> Details(Guid id)
         {
-            return await _mediator.Send(new Details.Query{Id = id});
+            return await _mediator.Send(new Details.Query { Id = id });
+        }
+
+        [HttpPost]
+        //(Create.Command command) is the MediatoR version ([FromBody]Acitivity activity)
+        //Having benefitted from [ApiController], so we need no qualifier [FromBody]
+        public async Task<ActionResult<Unit>> Create(Create.Command command)
+        {
+            return await _mediator.Send(command);
         }
     }
 }
